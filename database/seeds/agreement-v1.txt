@@ -1,0 +1,52 @@
+PLATFORM SUBSCRIPTION AND SERVICES AGREEMENT
+
+This Platform Subscription and Services Agreement (the "Agreement") is entered into between the operator of this software platform (the "Platform") and the restaurant business registering for an account (the "Restaurant"). By signing electronically, the authorised representative confirms that they have authority to bind the Restaurant.
+
+1. SERVICES
+1.1 The Platform provides a hosted restaurant operating system including digital menus, QR table ordering, online ordering, point of sale, kitchen display, billing, inventory, reporting and related tools (the "Services").
+1.2 The Platform may improve, modify or discontinue features. Material reductions in functionality will be communicated in advance where reasonably possible.
+
+2. ACCOUNT, APPROVAL AND ACCESS
+2.1 Registrations are subject to review and approval by the Platform. The Platform may reject a registration that is incomplete, inaccurate or inconsistent with this Agreement.
+2.2 The Restaurant is responsible for all activity under its accounts, for keeping credentials confidential, for assigning staff roles and permissions appropriately, and for promptly disabling accounts of staff who leave.
+
+3. SUBSCRIPTION AND PAYMENT
+3.1 Access to the Services requires an active subscription for the selected plan. Fees, currency and billing period are shown in the subscription area at the time of payment.
+3.2 Payments are made manually using the payment instructions provided by the Platform. A subscription is activated or renewed only after the Platform has verified the payment. Uploading a payment screenshot does not by itself constitute payment.
+3.3 Fees are non-refundable except where required by applicable law or expressly agreed in writing.
+
+4. EXPIRY, SUSPENSION AND DATA RETENTION
+4.1 If a subscription expires, a grace period configured by the Platform applies. After the grace period, or if the account is suspended for breach of this Agreement, access to the dashboard, customer ordering pages, table QR codes, online ordering and point of sale is blocked and active sessions are ended.
+4.2 Restaurant data is not deleted immediately on suspension or expiry. Data is retained for the retention period shown in the account (by default three (3) months) and may then be permanently deleted if the account has not been reactivated. The Restaurant will be notified of the scheduled deletion date and may request a data export before deletion.
+4.3 Only the Platform can reactivate a suspended account.
+
+5. RESTAURANT RESPONSIBILITIES
+5.1 The Restaurant is solely responsible for its menu, prices, allergen and ingredient information, tax configuration, receipts, invoices and compliance with food safety, consumer protection, tax and other laws applicable to its business.
+5.2 The Restaurant is responsible for verifying customer payments before marking them as approved. The Platform does not process or guarantee customer payments.
+5.3 The Restaurant must obtain any consent required by law before using customer contact details for marketing and must honour opt-out requests.
+
+6. DATA PROTECTION
+6.1 As between the parties, the Restaurant controls the personal data of its customers and staff that it enters into the Services, and the Platform processes that data on the Restaurant's behalf to provide the Services.
+6.2 The Platform applies reasonable technical and organisational security measures, including tenant isolation, encrypted connections, access controls, audit logging and backups.
+6.3 The Platform will not sell Restaurant data and will not access it except to provide, secure or support the Services, or where required by law.
+
+7. ACCEPTABLE USE
+The Restaurant must not use the Services for unlawful purposes, attempt to access other tenants' data, interfere with the security or operation of the Services, or reverse engineer the Services except where permitted by law.
+
+8. AVAILABILITY AND SUPPORT
+The Platform aims for high availability but does not guarantee uninterrupted service. Planned maintenance will be communicated where reasonably possible. Support is provided through the contact details published by the Platform.
+
+9. LIMITATION OF LIABILITY
+To the maximum extent permitted by law, neither party is liable for indirect or consequential losses, lost profits or lost data, and the Platform's total liability in any twelve-month period is limited to the subscription fees paid by the Restaurant in that period. Nothing in this Agreement limits liability that cannot be limited by law.
+
+10. TERM AND TERMINATION
+This Agreement continues while the Restaurant has an account. Either party may terminate by giving notice. On termination, the data retention rules in clause 4 apply.
+
+11. CHANGES TO THIS AGREEMENT
+The Platform may update this Agreement. If a change is material, the Restaurant will be asked to review and accept the new version electronically before continuing to use the Services.
+
+12. ELECTRONIC ACCEPTANCE
+The parties agree that this Agreement may be accepted electronically. The Platform records the signer's name, title, email, signature image, time of acceptance, agreement version, IP address and a cryptographic hash of the accepted content. The legal effect of electronic acceptance depends on the laws of the relevant jurisdiction; the Restaurant should obtain local legal advice where required.
+
+13. GOVERNING LAW
+This Agreement is governed by the laws of the jurisdiction in which the Platform operator is established, unless mandatory local law provides otherwise.

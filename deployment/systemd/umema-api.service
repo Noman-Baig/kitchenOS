@@ -1,0 +1,20 @@
+# Alternative to PM2. Copy to /etc/systemd/system/, then: systemctl daemon-reload && systemctl enable --now umema-api umema-worker umema-web
+[Unit]
+Description=umemaai_undated_version API + realtime
+After=network.target mysql.service
+
+[Service]
+Type=simple
+User=umema
+WorkingDirectory=/opt/umemaai_undated_version/backend
+EnvironmentFile=/opt/umemaai_undated_version/backend/.env
+Environment=RUN_WORKER_IN_API=false
+ExecStart=/usr/bin/node dist/server.js
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=full
+ReadWritePaths=/opt/umemaai_undated_version/backend/storage
+
+[Install]
+WantedBy=multi-user.target

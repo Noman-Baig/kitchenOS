@@ -1,0 +1,18 @@
+[Unit]
+Description=umemaai_undated_version background worker (subscriptions, backups, recurring jobs)
+After=network.target mysql.service
+
+[Service]
+Type=simple
+User=umema
+WorkingDirectory=/opt/umemaai_undated_version/backend
+EnvironmentFile=/opt/umemaai_undated_version/backend/.env
+ExecStart=/usr/bin/node dist/worker.js
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=full
+ReadWritePaths=/opt/umemaai_undated_version/backend/storage
+
+[Install]
+WantedBy=multi-user.target

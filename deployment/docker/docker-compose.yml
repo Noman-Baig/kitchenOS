@@ -1,0 +1,59 @@
+# Single-host container deployment: MySQL 8, Redis, API, worker, web, nginx.
+# 1) cp backend/.env.example deployment/docker/backend.env and edit (DB_HOST=mysql, REDIS_URL=redis://redis:6379)
+# 2) docker compose -f deployment/docker/docker-compose.yml up -d --build
+# 3) docker compose -f deployment/docker/docker-compose.yml exec api node dist/cli/migrate.js
+#    docker compose -f deployment/docker/docker-compose.yml exec api node dist/cli/seed.js
+#    docker compose -f deployment/docker/docker-compose.yml exec -it api node dist/cli/createSuperAdmin.js --email you@example.com
+name: umemaai
+services:
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: umema
+      MYSQL_USER: umema
+      MYSQL_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?set DB_ROOT_PASSWORD}
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci", "--default-time-zone=+00:00"]
+    volumes: [mysql:/var/lib/mysql]
+    healthcheck: { test: ["CMD", "mysqladmin", "ping", "-h", "localhost"], interval: 10s, retries: 10 }
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redis:/data]
+
+  api:
+    build: { context: ../.., dockerfile: deployment/docker/Dockerfile.backend }
+    restart: unless-stopped
+    env_file: backend.env
+    environment: { DB_HOST: mysql, REDIS_URL: "redis://redis:6379", RUN_WORKER_IN_API: "false" }
+    depends_on: { mysql: { condition: service_healthy }, redis: { condition: service_started } }
+    volumes: [storage:/app/backend/storage]
+
+  worker:
+    build: { context: ../.., dockerfile: deployment/docker/Dockerfile.backend }
+    restart: unless-stopped
+    env_file: backend.env
+    environment: { DB_HOST: mysql, REDIS_URL: "redis://redis:6379" }
+    command: ["node", "dist/worker.js"]
+    depends_on: { mysql: { condition: service_healthy }, redis: { condition: service_started } }
+    volumes: [storage:/app/backend/storage]
+
+  web:
+    build: { context: ../.., dockerfile: deployment/docker/Dockerfile.frontend }
+    restart: unless-stopped
+    environment: { BACKEND_URL: "http://api:4000", HOSTNAME: "0.0.0.0", PORT: "3000" }
+    depends_on: [api]
+
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./nginx.docker.conf:/etc/nginx/conf.d/default.conf:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    depends_on: [api, web]
+
+volumes: { mysql: {}, redis: {}, storage: {} }

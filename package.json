@@ -1,0 +1,22 @@
+{
+  "name": "umemaai_undated_version",
+  "version": "1.0.0",
+  "private": true,
+  "description": "umemaai_undated_version — multi-tenant Restaurant Operating System SaaS (Next.js + Node.js + MySQL)",
+  "engines": { "node": ">=20.11" },
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "install:all": "npm --prefix backend ci && npm --prefix frontend ci",
+    "build": "npm --prefix backend run build && rm -rf frontend/.next && npm --prefix frontend run build",
+    "migrate": "npm --prefix backend run migrate:prod",
+    "seed": "node backend/dist/cli/seed.js",
+    "test": "npm --prefix backend test",
+    "typecheck": "npm --prefix backend run typecheck && npm --prefix frontend run typecheck",
+    "start:api": "npm --prefix backend start",
+    "start:worker": "npm --prefix backend run start:worker",
+    "start:web": "npm --prefix frontend start",
+    "dev:api": "npm --prefix backend run dev",
+    "dev:web": "npm --prefix frontend run dev",
+    "print-bridge": "node scripts/print-bridge.mjs"
+  }
+}

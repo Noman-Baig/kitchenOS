@@ -1,0 +1,18 @@
+[Unit]
+Description=umemaai_undated_version web (Next.js)
+After=network.target umema-api.service
+
+[Service]
+Type=simple
+User=umema
+WorkingDirectory=/opt/umemaai_undated_version/frontend
+EnvironmentFile=-/opt/umemaai_undated_version/frontend/.env.production
+Environment=NODE_ENV=production
+Environment=BACKEND_URL=https://umemaai.com/fix
+ExecStart=/usr/bin/node node_modules/next/dist/bin/next start -p 3000
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
